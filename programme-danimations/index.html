@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf8">
+    <title>Programme d'animations</title>
+    <link rel="stylesheet" href="master.css" />
+    <script src="master.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="page-wrapper">
+            <div id="page">
+                <img id="page-background" src="fond.png" />
+                <img id="page-header-image" src="entete.png" />
+                <div id="page-title"></div>
+                <div id="page-date"></div>
+                <div id="animations">
+                    <div id="animations-left"></div>
+                    <div id="animations-right"></div>
+                </div>
+            </div>
+        </div>
+        <div id="commands">
+
+            <button class="btn" id="btn-save">Enregistrer</button>
+            <button class="btn" id="btn-load">Ouvrir</button>
+
+            <h3>En-tête</h3>
+
+            <div class="form-group">
+                <label class="form-label" for="input-title">Titre</label>
+                <input class="form-input" id="input-title" type="text" placeholder="Animations" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="input-date">Date</label>
+                <input class="form-input" id="input-date" type="text" placeholder="Octobre 2022" />
+            </div>
+
+            <h3>Animations</h3>
+
+            <div id="animation-inputs"></div>
+
+            <br>
+
+            <button class="btn" id="btn-add-animation">Ajouter une animation</button>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+
+    <template id="template-animation">
+        <div class="animation">
+            <div class="animation-left">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 4">
+                    <path class="blob" ></path>
+                </svg>
+
+                <div class="animation-day"></div>
+                <div class="animation-month"></div>
+            </div>
+            <div class="animation-right">
+                <div class="animation-title"></div>
+                <div class="animation-description"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-animation-input">
+        <div class="animation-input">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Jour</label>
+                    <input class="form-input animation-input-day" type="text" placeholder="Jour" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mois</label>
+                    <input class="form-input animation-input-month" type="text" placeholder="Mois" />
+                </div>
+                <div class="form-group animation-input-color">
+                    <div class="animation-input-color-item color-1"></div>
+                    <div class="animation-input-color-item color-2"></div>
+                    <div class="animation-input-color-item color-3"></div>
+                    <div class="animation-input-color-item color-4"></div>
+                    <div class="animation-input-color-item color-5"></div>
+                    <div class="animation-input-color-item color-6"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Titre</label>
+                <input class="form-input animation-input-title" type="text" placeholder="Titre" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea class="form-input animation-input-description" type="text" placeholder="Description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn animation-input-delete">Supprimer</button>
+                <button class="btn animation-input-top">Début</button>
+                <button class="btn animation-input-up">Avant</button>
+                <button class="btn animation-input-down">Après</button>
+                <button class="btn animation-input-bottom">Fin</button>
+            </div>
+        </div>
+    </template>
+
+</body>
+
+</html>

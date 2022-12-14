@@ -1,0 +1,315 @@
+* {
+    print-color-adjust: exact;
+    font-family: Raleway, sans-serif;
+    --color-1: #e27323;
+    --color-2: #fab500;
+    --color-3: #73b736;
+    --color-4: #70caf3;
+    --color-5: #8a94c9;
+    --color-6: #e2276e;
+}
+
+body {
+    background: #e0e0e0;
+}
+
+
+/* GENERAL LAYOUT ************************************************************/
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#commands {
+    padding: 1rem;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#page-wrapper {
+    width: 215mm;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+#page {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    flex-shrink: 0;
+}
+
+
+/* PAGE LAYOUT ***************************************************************/
+
+#page-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#page-header-image {
+    position: absolute;
+    width: 168mm;
+    left: 50%;
+    top: 5mm;
+    transform: translateX(-50%);
+}
+
+#page-title {
+    position: absolute;
+    top: 32mm;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #919293;
+    font-size: 48pt;
+    font-weight: 900;
+}
+
+#page-date {
+    position: absolute;
+    top: 55mm;
+    left: 62%;
+    transform: translateX(-50%);
+    color: #6dcaf3;
+    font-size: 26pt;
+    font-weight: 900;
+}
+
+#animations {
+    position: absolute;
+    top: 80mm;
+    left: 4%;
+    width: 92%;
+    height: 180mm;
+    display: flex;
+    flex-direction: row;
+}
+
+#animations-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    height: 100%;
+}
+
+#animations-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    height: 100%;
+}
+
+.btn {
+    font-size: inherit;
+    padding: .4rem;
+}
+
+.animation-input-color {
+    display: flex;
+    flex-direction: row;
+}
+
+.animation-input-color>* {
+    margin-right: .4rem;
+}
+
+.animation-input-color-item {
+    width: 5mm;
+    height: 5mm;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.animation-input-color-item.active {
+    border: 2px solid black;
+}
+
+.animation-input-title {
+    font-weight: bold;
+}
+
+.color-1 {
+    background-color: var(--color-1);
+    fill: var(--color-1);
+}
+
+.color-2 {
+    background-color: var(--color-2);
+    fill: var(--color-2);
+}
+
+.color-3 {
+    background-color: var(--color-3);
+    fill: var(--color-3);
+}
+
+.color-4 {
+    background-color: var(--color-4);
+    fill: var(--color-4);
+}
+
+.color-5 {
+    background-color: var(--color-5);
+    fill: var(--color-5);
+}
+
+.color-6 {
+    background-color: var(--color-6);
+    fill: var(--color-6);
+}
+
+.animation-input {
+    border: 1px solid lightgray;
+    padding: 1rem;
+    background: white;
+    margin-bottom: .8rem;
+}
+
+.animation {
+    display: flex;
+    flex-direction: row;
+    width: 96.6mm;
+    margin-bottom: .8rem;
+    box-sizing: border-box;
+}
+
+.animation-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 18mm;
+    height: 24mm;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    margin-right: .6rem;
+    flex-shrink: 0;
+}
+
+.animation-left>.animation-day,
+.animation-left>.animation-month {
+    position: relative;
+    z-index: 10;
+}
+
+.animation-left svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 18mm;
+    height: 24mm;
+    flex-shrink: 0;
+}
+
+.animation-right {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.animation-day {
+    font-size: 24pt;
+    font-weight: bold;
+    color: white;
+}
+
+.animation-month {
+    font-size: 11pt;
+    color: white;
+    text-shadow: #222;
+    /*margin-bottom: .8rem;*/
+}
+
+.animation-title {
+    font-weight: 700;
+    font-size: 11pt;
+    width: 80%;
+}
+
+.animation-description {
+    font-size: 10pt;
+    color: #222;
+}
+
+.hidden {
+    display: none;
+}
+
+@media print {
+    #page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    #commands {
+        display: none;
+    }
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: inherit;
+    margin-bottom: .2rem;
+    font-size: 80%;
+    color: #444;
+}
+
+.form-input {
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: .4rem;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-row>* {
+    margin-right: .4rem;
+}
+
+.animation-day-3 {
+    font-size: 20pt;
+}
+
+.animation-day-4 {
+    font-size: 16pt;
+}
+
+.animation-day-5 {
+    font-size: 12pt;
+}
+
+.animation-day-6 {
+    font-size: 10pt;
+}
