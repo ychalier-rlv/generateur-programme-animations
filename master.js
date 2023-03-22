@@ -3,6 +3,10 @@ window.addEventListener("load", () => {
     const maximum_number_of_animations = 20;
 
     var mason = null;
+    var scale = 1;
+    var margin = 0.4;
+
+    const ONE_COLUMN_MAX = 7;
 
     function arr_move(array, src, dst) {
         array.splice(dst, 0, array.splice(src, 1)[0]);
@@ -97,14 +101,25 @@ window.addEventListener("load", () => {
             document.getElementById("page-title").textContent = this.title;
             document.getElementById("page-date").textContent = this.date;
 
+            const animation_container = document.getElementById("animations");
+            animation_container.className = `animations-${ Math.ceil(this.animations.length / 2) }`;
+
             const animation_container_left = document.getElementById("animations-left");
             animation_container_left.innerHTML = "";
             const animation_container_right = document.getElementById("animations-right");
             animation_container_right.innerHTML = "";
 
+            // animation_container_left.style.transform = `scale(${ scale })`;
+            // animation_container_right.style.transform = `scale(${ scale })`;
+
             const animation_template = document.getElementById("template-animation");
             this.animations.forEach((animation, index) => {
                 const node = document.importNode(animation_template.content, true);
+
+                // node.querySelector(".animation").style.transform = `scale(${ scale })`;
+                // node.querySelector(".animation").style.marginTop = `${ margin }rem`;
+                // node.querySelector(".animation").style.marginBottom = `${ margin }rem`;
+
                 node.querySelector(".animation-day").innerHTML = animation.day;
                 node.querySelector(".animation-month").innerHTML = animation.month;
                 node.querySelector(".animation-title").innerHTML = animation.title;
@@ -181,12 +196,25 @@ window.addEventListener("load", () => {
                     }
                 }
 
-                if (index < Math.ceil(this.animations.length / 2)) {
-                    animation_container_left.appendChild(node);
+                if (this.animations.length >= ONE_COLUMN_MAX) {
+                    if (index < Math.ceil(this.animations.length / 2)) {
+                        animation_container_left.appendChild(node);
+                    } else {
+                        animation_container_right.appendChild(node);
+                    }
                 } else {
-                    animation_container_right.appendChild(node);
+                    animation_container_left.appendChild(node);
                 }
+
             });
+
+            if (this.animations.length < ONE_COLUMN_MAX) {
+                animation_container_left.classList.add("full");
+                animation_container_right.classList.add("hidden");
+            } else {
+                animation_container_left.classList.remove("full");
+                animation_container_right.classList.remove("hidden");
+            }
 
             this.save();
 
@@ -284,5 +312,19 @@ window.addEventListener("load", () => {
         file_input.accept = "application/json";
         file_input.click();
     });
+
+    /*
+    document.getElementById("input-scale").addEventListener("input", (event) => {
+    	scale = parseFloat(event.target.value);
+    	console.log("New scale:", scale);
+    	data.update();
+    });
+
+    document.getElementById("input-margin").addEventListener("input", (event) => {
+    	margin = parseFloat(event.target.value);
+    	console.log("New margin:", margin);
+    	data.update();
+    });
+    */
 
 });

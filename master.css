@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
     print-color-adjust: exact;
     font-family: Raleway, sans-serif;
@@ -187,8 +188,8 @@ body {
     display: flex;
     flex-direction: row;
     width: 96.6mm;
-    margin-bottom: .8rem;
     box-sizing: border-box;
+    align-items: center;
 }
 
 .animation-left {
@@ -197,7 +198,7 @@ body {
     flex-direction: column;
     width: 18mm;
     height: 24mm;
-    overflow: hidden;
+    /* overflow: hidden; */
     justify-content: center;
     align-items: center;
     margin-right: .6rem;
@@ -312,4 +313,66 @@ body {
 
 .animation-day-6 {
     font-size: 10pt;
+}
+
+.animation-left svg {
+    height: 100%;
+}
+
+.animations-8 .animation-left {
+    transform: scale(.8);
+    margin: -2em .6rem -2em 0;
+}
+
+.animations-8 .animation-title {
+    font-size: 10pt;
+    width: 100%;
+}
+
+.animations-8 .animation-description {
+    font-size: 9pt;
+}
+
+.animations-9 .animation-left {
+    transform: scale(.7);
+    margin: -2em .6rem -2em 0;
+}
+
+.animations-9 .animation-title {
+    font-size: 9pt;
+    width: 100%;
+}
+
+.animations-9 .animation-description {
+    font-size: 8pt;
+}
+
+.animations-10 .animation-left {
+    transform: scale(.7);
+    margin: -2em .6rem -2em 0;
+}
+
+.animations-10 .animation-title {
+    font-size: 9pt;
+    width: 100%;
+}
+
+.animations-10 .animation-description {
+    font-size: 8pt;
+}
+
+#animations {
+    justify-content: center;
+}
+
+#animations-left.full {
+    width: 75%;
+}
+
+#animations-left.full .animation {
+    transform: scale(1.2);
+}
+
+#animations-right.hidden {
+    width: 0%;
 }
