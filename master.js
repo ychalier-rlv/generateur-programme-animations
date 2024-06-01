@@ -17,12 +17,14 @@ window.addEventListener("load", () => {
             this.title = "";
             this.date = "";
             this.animations = [];
+            this.config = { smallTop: false };
         }
 
         save() {
             localStorage.setItem("title", this.title);
             localStorage.setItem("date", this.date);
             localStorage.setItem("animations", JSON.stringify(this.animations));
+            localStorage.setItem("config", JSON.stringify(this.config));
         }
 
         load() {
@@ -34,6 +36,9 @@ window.addEventListener("load", () => {
             }
             if (localStorage.getItem("animations") != null) {
                 this.animations = JSON.parse(localStorage.getItem("animations"));
+            }
+            if (localStorage.getItem("config") != null) {
+                this.config = JSON.parse(localStorage.getItem("config"));
             }
         }
 
@@ -216,6 +221,14 @@ window.addEventListener("load", () => {
                 animation_container_right.classList.remove("hidden");
             }
 
+            if (this.config.smallTop) {
+                document.getElementById("page").classList.add("smalltop");
+                document.getElementById("input-smalltop").checked = true;
+            } else {
+                document.getElementById("page").classList.remove("smalltop");
+                document.getElementById("input-smalltop").removeAttribute("checked");
+            }
+
             this.save();
 
         }
@@ -280,11 +293,18 @@ window.addEventListener("load", () => {
         data.add_animation();
     });
 
+    document.getElementById("input-smalltop").addEventListener("input", () => {
+        let checked = document.getElementById("input-smalltop").checked;
+        data.config.smallTop = checked;
+        data.update();
+    });
+
     document.getElementById("btn-save").addEventListener("click", () => {
         const data_string = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({
             title: data.title,
             date: data.date,
-            animations: data.animations
+            animations: data.animations,
+            config: data.config
         }));
         const anchor_element = document.createElement("a");
         anchor_element.setAttribute("href", data_string);
@@ -303,6 +323,9 @@ window.addEventListener("load", () => {
                     data.title = parsed_data.title;
                     data.date = parsed_data.date;
                     data.animations = parsed_data.animations;
+                    if ("config" in parsed_data) {
+                        data.config = parsed_data.config;
+                    }
                     data.update();
                 });
                 reader.readAsText(file_list[0], "UTF-8");
@@ -326,5 +349,14 @@ window.addEventListener("load", () => {
     	data.update();
     });
     */
-
+    /*
+	const smallTopInput = document.getElementById("input-smalltop");
+	smallTopInput.addEventListener("input", () => {
+		if (smallTopInput.checked) {
+			document.getElementById("page").classList.add("smalltop");
+		} else {
+			document.getElementById("page").classList.remove("smalltop");
+		}
+	});
+    */
 });

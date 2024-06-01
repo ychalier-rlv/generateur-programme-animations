@@ -376,3 +376,57 @@ body {
 #animations-right.hidden {
     width: 0%;
 }
+
+/*** SMALLTOP PAGE ****/
+
+#page.smalltop #page-top {
+	transform: scale(0.7);
+}
+
+#page.smalltop #animations {
+	top: 56mm;
+	height: 200mm;
+}
+
+#page.smalltop .animations-8 .animation-left {
+    transform: scale(.9);
+    margin: -2em .6rem -2em 0;
+}
+
+#page.smalltop .animations-8 .animation-title {
+    font-size: 11pt;
+    width: 100%;
+}
+
+#page.smalltop .animations-8 .animation-description {
+    font-size: 10pt;
+}
+
+#page.smalltop .animations-9 .animation-left {
+    transform: scale(.8);
+    margin: -2em .6rem -2em 0;
+}
+
+#page.smalltop .animations-9 .animation-title {
+    font-size: 11pt;
+    width: 100%;
+}
+
+#page.smalltop .animations-9 .animation-description {
+    font-size: 9pt;
+}
+
+#page.smalltop .animations-10 .animation-left {
+    transform: scale(.8);
+    margin: -2em .6rem -2em 0;
+}
+
+#page.smalltop .animations-10 .animation-title {
+    font-size: 10pt;
+    width: 100%;
+}
+
+#page.smalltop .animations-10 .animation-description {
+    font-size: 9pt;
+}
+
