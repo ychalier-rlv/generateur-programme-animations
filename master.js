@@ -1,10 +1,10 @@
 window.addEventListener("load", () => {
-    const page = document.getElementById("page");
+    // const page = document.getElementById("page");
     const maximum_number_of_animations = 20;
 
-    var mason = null;
-    var scale = 1;
-    var margin = 0.4;
+    // var mason = null;
+    // var scale = 1;
+    // var margin = 0.4;
 
     const ONE_COLUMN_MAX = 7;
 
@@ -58,6 +58,10 @@ window.addEventListener("load", () => {
         }
 
         add_animation() {
+            if (this.animations.length >= maximum_number_of_animations) {
+                alert(`Impossible d'ajouter une animation : maximum atteint (${maximum_number_of_animations})`);
+                return;
+            }
             this.animations.push({
                 day: "",
                 month: "",
