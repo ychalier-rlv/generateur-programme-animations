@@ -361,8 +361,47 @@ body {
     font-size: 8pt;
 }
 
+.animations-11 .animation-left {
+    transform: scale(.7);
+    margin: -2em .6rem -2em 0;
+}
+
+.animations-11 .animation-title {
+    font-size: 8pt;
+    width: 100%;
+}
+
+.animations-11 .animation-description {
+    font-size: 7pt;
+}
+
+.animations-13 .animation-left,
+.animations-12 .animation-left {
+    transform: scale(.6);
+    margin: -2em 0rem -2em 0;
+}
+
+.animations-13 .animation-title,
+.animations-12 .animation-title {
+    font-size: 8pt;
+    width: 100%;
+}
+
+.animations-13 .animation-description,
+.animations-12 .animation-description {
+    font-size: 7pt;
+}
+
 #animations {
     justify-content: center;
+}
+
+#animation-counter::before {
+    content: "(";
+}
+
+#animation-counter::after {
+    content: ")";
 }
 
 #animations-left.full {
@@ -377,13 +416,62 @@ body {
     width: 0%;
 }
 
+/*** NO PETAL ***/
+
+#page.nopetal #page-header-image {
+    display: none;
+}
+
+#page-header-image-nopetal {
+    display: none;
+}
+
+#page.nopetal #page-header-image-nopetal {
+    display: block;
+    position: absolute;
+    width: 35mm;
+    left: 10mm;
+    top: 12mm;
+}
+
+#page.nopetal #page-title {
+    top: 10mm;
+    font-size: 33.6pt;
+}
+
+#page.nopetal #page-date {
+    top: 14mm;
+    right: 10mm;
+    left: unset;
+    transform: unset;
+    font-size: 18.2pt;
+}
+
+#page.nopetal #animations {
+	top: 30mm;
+	height: 226mm;
+}
+
+#page.nopetal .animations-11 .animation-title,
+#page.nopetal .animations-12 .animation-title,
+#page.nopetal .animations-13 .animation-title {
+    font-size: 10pt;
+    width: 100%;
+}
+
+#page.nopetal .animations-11 .animation-description,
+#page.nopetal .animations-12 .animation-description,
+#page.nopetal .animations-13 .animation-description {
+    font-size: 9pt;
+}
+
 /*** SMALLTOP PAGE ****/
 
-#page.smalltop #page-top {
+#page:not(.nopetal).smalltop #page-top {
 	transform: scale(0.7);
 }
 
-#page.smalltop #animations {
+#page:not(.nopetal).smalltop #animations {
 	top: 56mm;
 	height: 200mm;
 }

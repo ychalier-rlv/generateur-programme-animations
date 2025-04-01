@@ -3,149 +3,137 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf8">
-    <title>Programme d'animations</title>
-    <!--<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> -->
-    <link rel="stylesheet" href="master.css" />
-    <script src="master.js"></script>
+
+<meta charset="utf8">
+<title>Programme d'animations</title>
+<link rel="stylesheet" href="master.css" />
+
 </head>
 
 <body>
-    <div id="wrapper">
-        <div id="page-wrapper">
-            <div id="page">
-                <img id="page-background" src="fond.png" />
-                <div id="page-top">
-	                <img id="page-header-image" src="entete.png" />
-        	        <div id="page-title"></div>
-                	<div id="page-date"></div>
-                </div>
-                <div id="animations">
-                    <div id="animations-left"></div>
-                    <div id="animations-right"></div>
-                </div>
+
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div id="page">
+            <img id="page-background" src="fond.png" />
+            <div id="page-top">
+                <img id="page-header-image" src="entete.png" />
+                <img id="page-header-image-nopetal" src="entete-nopetal.png" />
+                <div id="page-title"></div>
+                <div id="page-date"></div>
             </div>
-        </div>
-        <div id="commands">
-
-            <button class="btn" id="btn-save">Enregistrer</button>
-            <button class="btn" id="btn-load">Ouvrir</button>
-
-		<details style="margin-top: .4rem">
-			<summary>Instructions pour exporter en PDF</summary>
-			<ol>
-				<li>Imprimer la page en cours (<kbd>Ctrl</kbd>+<kbd>P</kbd>)</li>
-				<li><u>Destination :</u> Microsoft Print to PDF</li>
-				<li><u>Taille du papier :</u> A4</li>
-				<li><u>Echelle :</u> Ajuster à la largeur de la page</li>
-				<li><u>Marges :</u> Aucunes</li>
-				<li><u>Imprimer les en-têtes et pieds de page :</u> décocher</li>
-			</ol>
-		</details>
-		
-		<!--<details style="margin-top: .4rem">
-			<summary>Ajuster</summary>
-			<div>
-				<div>
-					<label>Echelle</label>
-					<input type="range" min="0" max="1" value="1" step="0.05" id="input-scale" />
-				</div>
-				<div>
-					<label>Marge</label>
-					<input type="range" min="-1" max="1" value="0.4" step="0.01" id="input-margin" />
-				</div>
-			</div>
-		</details>-->
-
-            <h3>En-tête</h3>
-
-            <div class="form-group">
-                <label class="form-label" for="input-title">Titre</label>
-                <input class="form-input" id="input-title" type="text" placeholder="Animations" />
+            <div id="animations">
+                <div id="animations-left"></div>
+                <div id="animations-right"></div>
             </div>
-
-            <div class="form-group">
-                <label class="form-label" for="input-date">Date</label>
-                <input class="form-input" id="input-date" type="text" placeholder="Octobre 2022" />
-            </div>
-
-		<div class="form-group">
-			<label class="form-label" for="input-smalltop">
-				<input type="checkbox" id="input-smalltop" /> Rétrécir l'en-tête
-			</label>
-		</div>
-
-            <h3>Animations</h3>
-
-            <div id="animation-inputs"></div>
-
-            <br>
-
-            <button class="btn" id="btn-add-animation">Ajouter une animation</button>
-
-            <br>
-            <br>
-            <br>
-
         </div>
     </div>
+    <div id="commands">
+        <button class="btn" id="btn-save">Enregistrer</button>
+        <button class="btn" id="btn-load">Ouvrir</button>
+        <details style="margin-top: .4rem">
+            <summary>Instructions pour exporter en PDF</summary>
+            <ol>
+                <li>Imprimer la page en cours (<kbd>Ctrl</kbd>+<kbd>P</kbd>)</li>
+                <li><u>Destination :</u> Microsoft Print to PDF</li>
+                <li><u>Taille du papier :</u> A4</li>
+                <li><u>Echelle :</u> Ajuster à la largeur de la page</li>
+                <li><u>Marges :</u> Aucunes</li>
+                <li><u>Imprimer les en-têtes et pieds de page :</u> décocher</li>
+            </ol>
+        </details>
+        <h3>En-tête</h3>
+        <div class="form-group">
+            <label class="form-label" for="input-title">Titre</label>
+            <input class="form-input" id="input-title" type="text" placeholder="Animations" />
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="input-date">Date</label>
+            <input class="form-input" id="input-date" type="text" placeholder="Octobre 2022" />
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="input-smalltop">
+                <input type="checkbox" id="input-smalltop" /> Rétrécir l'en-tête (&le; 20 animations)
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="input-nopetal">
+                <input type="checkbox" id="input-nopetal" /> Enlever le pétale d'en-tête (&ge; 20 animations)
+            </label>
+        </div>
+        <h3>Animations <span id="animation-counter">0</span></h3>
+        <div id="animation-inputs"></div>
+        <br>
+        <button class="btn" id="btn-add-animation">Ajouter une animation</button>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
 
-    <template id="template-animation">
-        <div class="animation">
-            <div class="animation-left">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 4">
-                    <path class="blob" ></path>
-                </svg>
+<template id="template-animation">
+    <div class="animation">
+        <div class="animation-left">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 3 4">
+                <path class="blob"></path>
+            </svg>
 
-                <div class="animation-day"></div>
-                <div class="animation-month"></div>
+            <div class="animation-day"></div>
+            <div class="animation-month"></div>
+        </div>
+        <div class="animation-right">
+            <div class="animation-title"></div>
+            <div class="animation-description"></div>
+        </div>
+    </div>
+</template>
+
+<template id="template-animation-input">
+    <div class="animation-input">
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">Jour</label>
+                <input class="form-input animation-input-day"
+                    type="text" placeholder="Jour" />
             </div>
-            <div class="animation-right">
-                <div class="animation-title"></div>
-                <div class="animation-description"></div>
+            <div class="form-group">
+                <label class="form-label">Mois</label>
+                <input class="form-input animation-input-month"
+                    type="text" placeholder="Mois" />
+            </div>
+            <div class="form-group animation-input-color">
+                <div class="animation-input-color-item color-1"></div>
+                <div class="animation-input-color-item color-2"></div>
+                <div class="animation-input-color-item color-3"></div>
+                <div class="animation-input-color-item color-4"></div>
+                <div class="animation-input-color-item color-5"></div>
+                <div class="animation-input-color-item color-6"></div>
             </div>
         </div>
-    </template>
-
-    <template id="template-animation-input">
-        <div class="animation-input">
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Jour</label>
-                    <input class="form-input animation-input-day" type="text" placeholder="Jour" />
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Mois</label>
-                    <input class="form-input animation-input-month" type="text" placeholder="Mois" />
-                </div>
-                <div class="form-group animation-input-color">
-                    <div class="animation-input-color-item color-1"></div>
-                    <div class="animation-input-color-item color-2"></div>
-                    <div class="animation-input-color-item color-3"></div>
-                    <div class="animation-input-color-item color-4"></div>
-                    <div class="animation-input-color-item color-5"></div>
-                    <div class="animation-input-color-item color-6"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Titre</label>
-                <input class="form-input animation-input-title" type="text" placeholder="Titre" />
-            </div>
-            <div class="form-group">
-                <label class="form-label">Description</label>
-                <textarea class="form-input animation-input-description" type="text" placeholder="Description" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <button class="btn animation-input-delete">Supprimer</button>
-                <button class="btn animation-input-top">Début</button>
-                <button class="btn animation-input-up">Avant</button>
-                <button class="btn animation-input-down">Après</button>
-                <button class="btn animation-input-bottom">Fin</button>
-            </div>
+        <div class="form-group">
+            <label class="form-label">Titre</label>
+            <input class="form-input animation-input-title" type="text"
+                placeholder="Titre" />
         </div>
-    </template>
+        <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea class="form-input animation-input-description"
+                type="text" placeholder="Description"
+                rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <button
+                class="btn animation-input-delete">Supprimer</button>
+            <button class="btn animation-input-top">Début</button>
+            <button class="btn animation-input-up">Avant</button>
+            <button class="btn animation-input-down">Après</button>
+            <button class="btn animation-input-bottom">Fin</button>
+        </div>
+    </div>
+</template>
+
+<script src="master.js"></script>
 
 </body>
 
